@@ -1,12 +1,15 @@
 package com.nelioalves.cursomc.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Categoria implements Serializable{
@@ -17,10 +20,14 @@ public class Categoria implements Serializable{
 		private Integer id;
 		private String nome;
 		
+		@ManyToMany(mappedBy="categorias")
+		private List<Produto> protutos = new ArrayList<>();
+		
 		public Categoria() {
 			
 		}
 
+		
 		public Categoria(Integer id, String nome) {
 			super();
 			this.id = id;
@@ -43,6 +50,14 @@ public class Categoria implements Serializable{
 			this.nome = nome;
 		}
 
+		public List<Produto> getProtutos() {
+			return protutos;
+		}
+
+		public void setProtutos(List<Produto> protutos) {
+			this.protutos = protutos;
+		}
+		
 		@Override
 		public int hashCode() {
 			return Objects.hash(id);
@@ -59,6 +74,8 @@ public class Categoria implements Serializable{
 			Categoria other = (Categoria) obj;
 			return Objects.equals(id, other.id);
 		}
+
+
 		
 		
 		
