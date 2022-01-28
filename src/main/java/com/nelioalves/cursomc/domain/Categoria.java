@@ -32,6 +32,7 @@ public class Categoria implements Serializable{
 			super();
 			this.id = id;
 			this.nome = nome;
+			this.toString();
 		}
 
 		public Integer getId() {
@@ -73,6 +74,12 @@ public class Categoria implements Serializable{
 				return false;
 			Categoria other = (Categoria) obj;
 			return Objects.equals(id, other.id);
+		}
+
+
+		@Override
+		public String toString() {
+			return "Categoria [id=" + id + ", nome=" + nome + ", protutos=" + protutos + "]";
 		}
 
 
